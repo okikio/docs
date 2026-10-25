@@ -1,78 +1,52 @@
-# Technical Documentation Standards
+# Software design guides
 
-> **Building great software through web standards and best practices**
+Use these guides to make and explain decisions about HTTP APIs, browser applications,
+and reusable JavaScript packages. Each guide starts with a problem, describes the
+relevant contract, and gives examples or questions to check against your own system.
 
-This repository contains comprehensive, in-depth guides for building modern software systems. Each guide is designed to take you from foundational concepts to senior architect-level understanding, with a strong focus on web standards (RFCs, ISOs, W3C specifications) and real-world implementation.
+## Find a guide
 
-## Core Workflows
+| Task | Start here | What is available |
+| --- | --- | --- |
+| Design an HTTP API | [API guide](apis/README.md) | An overview and ten topic guides |
+| Build a browser interface | [Frontend guide](frontend/README.md) | One overview of user flows, browser behavior, performance, and accessibility |
+| Publish reusable code | [Library guide](libraries/README.md) | One overview of API contracts, package formats, documentation, and releases |
 
-### 🔌 [REST APIs](./apis/)
-Master the art of designing and implementing production-grade REST APIs. From versioning strategies rooted in HTTP specifications to advanced caching mechanisms following RFC 7234, these guides cover every aspect of building robust, scalable APIs.
+### API topics
 
-**Topics:**
-- [Versioning](./apis/versioning.md) - Strategies for API evolution
-- [Error Handling](./apis/error-handling.md) - Standardized error responses
-- [Authentication](./apis/authentication.md) - Security and access control
-- [Filtering](./apis/filtering.md) - Query patterns and data retrieval
-- [Pagination](./apis/pagination.md) - Handling large datasets
-- [Rate Limiting](./apis/rate-limiting.md) - Protecting your resources
-- [Content Negotiation](./apis/content-negotiation.md) - Multiple data formats
-- [Idempotency](./apis/idempotency.md) - Safe request retries
-- [Caching](./apis/caching.md) - HTTP caching strategies
-- [Observability](./apis/observability.md) - Logging, monitoring, and health checks
+- [Versioning](apis/versioning.md): change an API while supporting existing clients.
+- [Error handling](apis/error-handling.md): explain what failed and what the client can do next.
+- [Authentication](apis/authentication.md): establish identity and enforce access rules.
+- [Filtering](apis/filtering.md) and [pagination](apis/pagination.md): select and traverse results.
+- [Rate limiting](apis/rate-limiting.md): bound request volume and communicate retry conditions.
+- [Content negotiation](apis/content-negotiation.md): select a response representation.
+- [Idempotency](apis/idempotency.md): define what happens when a request is repeated.
+- [Caching](apis/caching.md): reuse responses under explicit freshness and validation rules.
+- [Observability](apis/observability.md): connect a failed request to diagnostic evidence.
 
-### 🎨 [Frontend Development](./frontend/)
-Build accessible, performant, and maintainable frontend applications using modern web standards. Learn how browsers work, how to optimize for Core Web Vitals, and how to create inclusive user experiences.
+## Apply a guide to a real change
 
-**Topics:**
-- Project Structure & Architecture
-- Performance Optimization
-- Accessibility (WCAG, ARIA)
-- State Management Patterns
-- Routing & Navigation
-- Forms & Validation
-- API Integration
-- Error Handling & Resilience
-- Testing Strategies
-- Security Best Practices
-- Build & Deployment
-- Developer Experience
+1. State the user's goal and the result the system must provide.
+2. Identify the current entrypoint, responsible component, stored state, and external dependencies.
+3. Read the guide for the decision you need to make. Follow its primary-source links when a standard determines the behavior.
+4. Record the chosen behavior, its limits, and the alternatives that matter for this system.
+5. Verify one normal flow and the failures that could violate the contract. Keep the commands and results with the change.
 
-### 📦 [Libraries & Packages](./libraries/)
-Create reusable, well-documented libraries that developers love to use. From package design to distribution, learn the patterns and practices that make great open-source projects.
+These documents are design guidance. They do not certify an implementation or
+replace its supported-version policy, security review, or tests. Frontend and
+library topic pages beyond the overviews have not been added yet.
 
-**Topics:**
-- Package Architecture
-- API Design Principles
-- Documentation Standards
-- TypeScript & Type Safety
-- Testing & Quality Assurance
-- Versioning & Releases
-- Performance Optimization
-- Bundle Size Management
-- Backwards Compatibility
-- Security Practices
-- Developer Experience
-- Publishing & Distribution
+## Contribute
 
-## Philosophy
+A useful addition lets another maintainer apply the idea without asking its author
+to explain it again. Give the reader a concrete problem, define necessary terms,
+and connect each recommendation to its reason. Distinguish a standard's requirement
+from a project choice. Link to the relevant primary source and include prerequisites
+and expected results for runnable examples.
 
-These guides are written with several principles in mind:
-
-1. **Progressive Disclosure**: Start with the problem and build understanding step-by-step
-2. **Standards-First**: Ground every recommendation in web standards, RFCs, and specifications
-3. **Real-World Focus**: Practical examples from production systems
-4. **Accessibility**: Written in plain English, approachable for junior developers
-5. **Depth**: Detailed enough to give senior architect-level understanding
-
-## Contributing
-
-This is a living documentation project. Contributions, corrections, and improvements are welcome! Please ensure any additions:
-
-- Follow the established writing style (approachable, narrative, progressive)
-- Reference relevant standards (RFCs, W3C specs, ISOs)
-- Include practical, runnable examples
-- Build understanding progressively
+Before submitting, follow the links, check the examples, and explain any checks
+you could not run. Preserve exact API names, commands, and protocol fields when
+simplifying the surrounding English.
 
 ## License
 

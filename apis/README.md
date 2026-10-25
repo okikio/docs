@@ -1,14 +1,16 @@
-# REST API Best Practices
+# HTTP API design
 
-> **Designing APIs that stand the test of time**
+An HTTP API gives clients a way to request data or change system state. Its contract
+includes inputs, authorization, response formats, failure behavior, and retry rules.
+Use these guides to define that contract and trace a request from the client to
+its observable result.
 
-Modern web applications live and die by their APIs. Whether you're building a mobile app, connecting microservices, or creating a platform for third-party developers, your API is the contract that defines how systems communicate.
-
-This section covers everything you need to know to design, implement, and maintain production-grade REST APIs based on web standards and battle-tested patterns.
+This section contains ten topic guides. Their examples illustrate decisions to
+review for your own service; they are not a complete production implementation.
 
 ## What You'll Learn
 
-Each guide in this section takes you from fundamental concepts to advanced implementation details:
+Choose a guide for the behavior you need to define:
 
 ### Core Topics
 
@@ -25,7 +27,7 @@ Each guide in this section takes you from fundamental concepts to advanced imple
 
 ## REST Fundamentals
 
-REST (Representational State Transfer) isn't just a style guide—it's an architectural pattern grounded in the HTTP protocol specification (RFC 7231). Understanding REST means understanding how the web was designed to work.
+REST (Representational State Transfer) is an architectural style described in [Roy Fielding's dissertation](https://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm). HTTP is a protocol often used to implement it. [RFC 9110](https://www.rfc-editor.org/info/rfc9110/) defines HTTP semantics, including methods, status codes, and representation metadata; it does not define REST.
 
 ### The Six Constraints
 
@@ -57,14 +59,16 @@ For specific challenges:
 
 These guides reference and build upon established web standards:
 
-- **HTTP/1.1** - RFC 7230-7235 (Protocol fundamentals)
-- **HTTP/2** - RFC 7540 (Performance improvements)
+- **HTTP semantics** — [RFC 9110](https://www.rfc-editor.org/info/rfc9110/)
+- **HTTP caching** — [RFC 9111](https://www.rfc-editor.org/info/rfc9111/)
+- **HTTP/1.1 message syntax** — [RFC 9112](https://www.rfc-editor.org/info/rfc9112/)
+- **HTTP/2** — [RFC 9113](https://www.rfc-editor.org/info/rfc9113/)
 - **HTTP/3** - RFC 9114 (QUIC-based HTTP)
 - **URI** - RFC 3986 (Uniform Resource Identifiers)
 - **JSON** - RFC 8259 (JavaScript Object Notation)
 - **OAuth 2.0** - RFC 6749 (Authorization framework)
 - **JWT** - RFC 7519 (JSON Web Tokens)
-- **Problem Details** - RFC 7807 (HTTP API error responses)
+- **Problem Details** — [RFC 9457](https://www.rfc-editor.org/info/rfc9457/), which replaces RFC 7807
 
 ## Beyond This Guide
 
@@ -76,4 +80,4 @@ API design is a vast topic. After mastering these fundamentals, consider explori
 - **Server-Sent Events** for server-push updates
 - **Webhooks** for event-driven integrations
 
-Each has its place, but REST remains the foundation of modern web APIs.
+Choose a protocol from the interaction your clients need, then document its connection, authorization, retry, and failure behavior.
